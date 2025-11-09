@@ -1,0 +1,154 @@
+body {
+  background-image: url('アイスバーグ3.jpg'); /* 画像のパスを指定 */
+  background-size: cover;         /* 画面全体にフィット */
+  background-position: center;    /* 中央に配置 */
+  background-repeat: no-repeat;   /* 繰り返しなし */
+  background-attachment: fixed;   /* スクロールしても背景固定（任意） */
+}
+
+
+/* ロゴのスタイル（ブロック化して縦揃え安定）*/
+.logo {
+  display: block;
+  width: 70px;
+  height: auto;
+  transform: rotate(-90deg);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 40px auto 20px auto; /* 上下の余白＋中央揃え */
+}
+
+.logo-title {
+    background-color: rgba(255, 255, 255, 0.8); /* 白＋透明感 */
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'KTEGAKI', sans-serif;
+  font-size: 80px;
+  margin-top: 40px;
+}
+
+.char {
+  display: inline-block;
+  transform: rotate(5deg); /* 少し斜めに */
+  margin: 0 2px;
+}
+
+/* 各文字に色を指定 */
+.y { color: #ff1ff4; }   /* 赤系 */
+.u { color: #0ff749; }   /* 黄色系 */
+.k { color: #22e7c6; }   /* 緑系 */
+.i { color: #71c2f8; }   /* 青系 */
+
+/* フォント変更 */
+@font-face {
+    font-family: 'KTEGAKI';
+    src: url('fonts/KTEGAKI.ttf') format('truetype');
+}
+
+.welcome-message {
+  background-color: rgba(255, 255, 255, 0.8); /* 白＋透明感 */
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'KTEGAKI', sans-serif;
+  font-size: 32px;
+  margin: 20px auto;
+  color: #5471f5;
+  animation: fadeIn 2s ease-in-out;
+  width: fit-content;        /* 内容に合わせて横幅調整 */
+  max-width: 90%;            /* 長すぎる場合の制限（任意） */
+}
+
+.link-row {
+  display: flex;
+  justify-content: center;     /* 中央揃え */
+  gap: 20px;                   /* リンク同士の間隔 */
+  margin-top: 20px;
+  flex-wrap: wrap;             /* 画面が狭いとき折り返す（任意） */
+}
+
+.cooking-link {
+  text-align: center;
+  font-family: 'KTEGAKI', sans-serif;
+  font-size: 32px;
+  margin-top: 10px;
+  animation: fadeIn 2s ease-in-out;
+
+}
+
+.cooking-link a {
+    background-color: rgba(255, 255, 255, 0.8); /* 白＋透明感 */
+    padding: 20px;
+    border-radius: 12px;
+    color: #ff8c00;
+    text-decoration: none; /* 下線を消したい場合 */
+}
+
+.diy-link {
+  text-align: center;
+  font-family: 'KTEGAKI', sans-serif;
+  font-size: 32px;
+  margin-top: 10px;
+  animation: fadeIn 2s ease-in-out;
+
+}
+
+.diy-link a {
+    background-color: rgba(255, 255, 255, 0.8); /* 白＋透明感 */
+    padding: 20px;
+    border-radius: 12px;
+    color: #ff8c00;
+    text-decoration: none; /* 下線を消したい場合 */
+}
+
+.ai-blender-link {
+  text-align: center;
+  font-family: 'KTEGAKI', sans-serif;
+  font-size: 32px;
+  margin-top: 10px;
+  animation: fadeIn 2s ease-in-out;
+
+}
+
+.ai-blender-link a {
+    background-color: rgba(255, 255, 255, 0.8); /* 白＋透明感 */
+    padding: 20px;
+    border-radius: 12px;
+    color: #ff8c00;
+    text-decoration: none; /* 下線を消したい場合 */
+}
+
+
+.note-link {
+  text-align: center;
+  font-family: 'KTEGAKI', sans-serif;
+  font-size: 32px;
+  margin-top: 10px;
+  animation: fadeIn 2s ease-in-out;
+
+}
+.note-link a {
+    background-color: rgba(255, 255, 255, 0.8); /* 白＋透明感 */
+    padding: 20px;
+    border-radius: 12px;
+    color: #19e776;
+    text-decoration: none; /* 下線を消したい場合 */
+}
+
+.symbol {
+  font-family: 'Arial', sans-serif; /* 記号用に別フォントを指定 */
+  margin-right: 6px;                /* 少し余白を入れて読みやすく */
+}
+
+@media screen and (max-width: 600px) {
+  .link-row {
+    flex-direction: column;  /* 縦並びに変更 */
+    align-items: center;     /* 中央揃え */
+  }
+
+  .cooking-link,
+  .note-link {
+    margin-top: 10px;
+  }
+}

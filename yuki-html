@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>My Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuki hobby room</title>
+    <link rel="stylesheet" href="yuki.css">
 </head>
 <body>
-  <h1>こんにちは、世界！</h1>
+  <img src="Yukiロゴマーク.jpg" alt="Yukiロゴ" class="logo">
+
+  <h1 class="logo-title">
+    <span class="char y">Y</span>
+    <span class="char u">u</span>
+    <span class="char k">k</span>
+    <span class="char i">i</span>
+  </h1>
+
+  <p class="welcome-message">Yuki hobby roomへようこそ！</p>
+
+  <div class="link-row">
+    <h1 class="cooking-link">
+      <a href="dist\cooking.html">🍳 クッキングページへ</a>
+    </h1>
+
+    <h1 class="diy-link">
+      <a href="dist\diy.html">🛠️ DIYページへ</a>
+    </h1>
+
+    <h1 class="ai-blender-link">
+      <a href="dist\ai-blender.html">🖥️ AI-Blenderページへ</a>
+    </h1>
+    
+    <h1 class="note-link">
+      <a href="https://note.com/shiny_parrot7911" target="_blank">
+        <span class="symbol">▶</span> Note日記はこちら
+      </a>
+    </h1>
+  </div>
 </body>
+
 </html>
