@@ -68,6 +68,24 @@ body {
   flex-wrap: wrap;             /* 画面が狭いとき折り返す（任意） */
 }
 
+.garden-link {
+  text-align: center;
+  font-family: 'KTEGAKI', sans-serif;
+  font-size: 32px;
+  margin-top: 10px;
+  animation: fadeIn 2s ease-in-out;
+
+}
+
+.garden-link a {
+    background-color: rgba(255, 255, 255, 0.8); /* 白＋透明感 */
+    padding: 20px;
+    border-radius: 12px;
+    color: #ff8c00;
+    text-decoration: none; /* 下線を消したい場合 */
+}
+
+
 .cooking-link {
   text-align: center;
   font-family: 'KTEGAKI', sans-serif;
