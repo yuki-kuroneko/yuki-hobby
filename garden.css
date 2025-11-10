@@ -1,0 +1,28 @@
+.body{
+    background-color: aliceblue;
+    
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;     /* 横方向の中央揃え */
+  align-items: center;         /* 縦方向の中央揃え（必要なら） */
+  gap: 20px;                   /* 画像の間隔 */
+  margin: 350px auto;           /* 上下の余白＋中央揃え */
+  max-width: 90%;              /* 横幅制限（任意） */
+}
+
+
+.slide img {
+  width: 150px;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.slide.active img {
+  transform: scale(1.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
