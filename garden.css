@@ -1,28 +1,71 @@
-.body{
-    background-color: aliceblue;
-    
+/* 背景 */
+body {
+  background-color: aliceblue;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* 画面中央へ */
+  align-items: center;
 }
 
+/* カルーセルの基本配置 */
 .carousel {
   display: flex;
-  justify-content: center;     /* 横方向の中央揃え */
-  align-items: center;         /* 縦方向の中央揃え（必要なら） */
-  gap: 20px;                   /* 画像の間隔 */
-  margin: 350px auto;           /* 上下の余白＋中央揃え */
-  max-width: 90%;              /* 横幅制限（任意） */
+  justify-content: center;
+  align-items: center;
+  gap: 40px;                 /* 余白を広めにして重なりを回避 */
+  padding: 20px;
 }
 
+/* 各スライドの基本 */
+.slide {
+  position: relative;        /* transformで動かすため */
+  transition: transform 0.6s ease;
+}
 
 .slide img {
-  width: 150px;
+  width: 220px;
   height: auto;
   border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  transition: transform 0.6s ease, opacity 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  opacity: 0.9;
 }
 
+/* 選択されていない写真の待機（ベース） */
+.slide:not(.active) img {
+  transform: scale(0.85);
+  opacity: 0.8;
+}
+
+/* 選択された写真：大きく、正面で主役に */
 .slide.active img {
-  transform: scale(1.5);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  transform: scale(2.2) rotateY(0deg);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* 左に退避（選ばれていない写真） */
+.slide.left img {
+  transform: translateX(-140px) rotateY(60deg) scale(0.8);
+}
+
+/* 右に退避（選ばれていない写真） */
+.slide.right img {
+  transform: translateX(140px) rotateY(-60deg) scale(0.8);
+}
+
+/* 重なり防止（画像同士が近いときにさらに余白を出すオプション） */
+.slide.left { z-index: 1; }
+.slide.right { z-index: 1; }
+
+/* 小さめ画面の調整 */
+@media (max-width: 600px) {
+  .carousel { gap: 20px; }
+  .slide img { width: 180px; }
+  .slide.active img { transform: scale(1.8); }
+  .slide.left img { transform: translateX(-90px) rotateY(50deg) scale(0.8); }
+  .slide.right img { transform: translateX(90px) rotateY(-50deg) scale(0.8); }
 }
