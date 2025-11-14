@@ -15,6 +15,7 @@ body {
   align-items: center;
   gap: 40px;                 /* 余白を広めにして重なりを回避 */
   padding: 20px;
+   flex-wrap: wrap;             /* 画面が狭いとき折り返す（任意） */
 }
 
 /* 各スライドの基本 */
