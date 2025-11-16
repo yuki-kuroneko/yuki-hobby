@@ -112,7 +112,7 @@ body {
   }
   
   .slide img { 
-    width: 120px;              /* スマホに合わせた基準サイズ */
+    width: 200px;              /* スマホに合わせた基準サイズ */
     height: 120px;             /* 正方形にする */
     object-fit: cover;         /* 画像の中心を保ちつつ切り取り */
   }
