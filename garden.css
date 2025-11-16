@@ -4,7 +4,7 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
-  justify-content: center; /* 画面中央へ */
+  justify-content: center;
   align-items: center;
 }
 
@@ -13,15 +13,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;                 /* 余白を広めにして重なりを回避 */
+  gap: 40px;
   padding: 20px;
-   flex-wrap: wrap;             /* 画面が狭いとき折り返す（任意） */
+  position: relative;
+  width: 100%;
+  height: 400px;
 }
 
 /* 各スライドの基本 */
 .slide {
-  position: relative;        /* transformで動かすため */
-  transition: transform 0.6s ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  perspective: 1200px;
 }
 
 .slide img {
@@ -29,44 +35,65 @@ body {
   height: auto;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-  transition: transform 0.6s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
-  opacity: 0.9;
-}
-
-/* 選択されていない写真の待機（ベース） */
-.slide:not(.active) img {
-  transform: scale(0.85);
   opacity: 0.8;
+  display: block;
 }
 
-/* 選択された写真：大きく、正面で主役に */
+/* 左側の写真（奥） */
+.slide.left img {
+  transform: translateX(-280px) scale(0.7) rotateY(35deg);
+  opacity: 0.5;
+  filter: blur(1px);
+}
+
+/* 中央のアクティブ写真 */
 .slide.active img {
-  transform: scale(2.2) rotateY(0deg);
+  transform: translateX(0) scale(1) rotateY(0deg);
   box-shadow: 0 12px 32px rgba(0,0,0,0.35);
   opacity: 1;
   z-index: 2;
 }
 
-/* 左に退避（選ばれていない写真） */
-.slide.left img {
-  transform: translateX(-140px) rotateY(60deg) scale(0.8);
-}
-
-/* 右に退避（選ばれていない写真） */
+/* 右側の写真（手前） */
 .slide.right img {
-  transform: translateX(140px) rotateY(-60deg) scale(0.8);
+  transform: translateX(280px) scale(0.7) rotateY(-35deg);
+  opacity: 0.5;
+  filter: blur(1px);
 }
 
-/* 重なり防止（画像同士が近いときにさらに余白を出すオプション） */
 .slide.left { z-index: 1; }
 .slide.right { z-index: 1; }
 
-/* 小さめ画面の調整 */
+/* スマホ対応（600px以下） */
 @media (max-width: 600px) {
-  .carousel { gap: 20px; }
-  .slide img { width: 180px; }
-  .slide.active img { transform: scale(1.8); }
-  .slide.left img { transform: translateX(-90px) rotateY(50deg) scale(0.8); }
-  .slide.right img { transform: translateX(90px) rotateY(-50deg) scale(0.8); }
+  .carousel { 
+    height: 300px;
+  }
+  
+  .slide img { 
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
+  
+  /* 左側 */
+  .slide.left img { 
+    transform: translateX(-150px) scale(0.65) rotateY(25deg);
+    opacity: 0.4;
+  }
+  
+  /* 中央 */
+  .slide.active img { 
+    transform: translateX(0) scale(1) rotateY(0deg);
+    width: 140px;
+    height: 140px;
+  }
+  
+  /* 右側 */
+  .slide.right img { 
+    transform: translateX(150px) scale(0.65) rotateY(-25deg);
+    opacity: 0.4;
+  }
 }
