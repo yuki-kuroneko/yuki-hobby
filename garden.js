@@ -23,5 +23,5 @@ function rotateCarousel() {
   currentIndex = (currentIndex + 1) % slides.length;
 }
 
-// 3秒ごとに切り替え
-setInterval(rotateCarousel, 3000);
+// 5秒ごとに切り替え
+setInterval(rotateCarousel,5000);
