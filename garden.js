@@ -1,27 +1,36 @@
 // garden.js
-const slides = document.querySelectorAll('.slide');
-let currentIndex = 1; // 最初は中央の写真
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = Array.from(document.querySelectorAll('.carousel .slide'));
+  if (slides.length === 0) return;
 
-function rotateCarousel() {
-  // 現在のクラスをリセット
-  slides.forEach(slide => {
-    slide.classList.remove('active', 'left', 'right');
-  });
+  // 初期 active を探す（無ければ0番をactiveに）
+  let current = slides.findIndex(s => s.classList.contains('active'));
+  if (current === -1) current = 0;
 
-  // 前の写真
-  const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-  slides[prevIndex].classList.add('left');
+  function updateClasses() {
+    const n = slides.length;
+    // 全スライドのクラスをリセット
+    slides.forEach(s => s.classList.remove('left', 'active', 'right', 'gone'));
+    const left = (current - 1 + n) % n;
+    const right = (current + 1) % n;
 
-  // 現在の写真
-  slides[currentIndex].classList.add('active');
+    slides[left].classList.add('left');
+    slides[current].classList.add('active');
+    slides[right].classList.add('right');
 
-  // 次の写真
-  const nextIndex = (currentIndex + 1) % slides.length;
-  slides[nextIndex].classList.add('right');
+    // その他は画面外へ退避させる
+    slides.forEach((s, i) => {
+      if (i !== left && i !== current && i !== right) s.classList.add('gone');
+    });
+  }
 
-  // 次のループへ
-  currentIndex = (currentIndex + 1) % slides.length;
-}
+  // 初回レンダリング
+  updateClasses();
 
-// 5秒ごとに切り替え
-setInterval(rotateCarousel,5000);
+  // 3秒ごとに「左から中央へ」移動する -> current を左へ移動させる
+  setInterval(() => {
+    const n = slides.length;
+    current = (current - 1 + n) % n; // 左のスライドを次の active にする
+    updateClasses();
+  }, 3000);
+});

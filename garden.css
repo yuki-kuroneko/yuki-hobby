@@ -11,6 +11,17 @@ body {
   align-items: center;         /* 垂直方向の中央揃え */
 }
 
+/* ページ全体のコンテナ */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 95%;
+  gap: 30px;
+}
+
 /* カルーセルの土台
    - 中央に固定されたステージのような領域
    - position: relative を付けることで、子要素(.slide)を絶対配置できる
@@ -101,6 +112,15 @@ body {
 .slide.left { z-index: 1; }
 .slide.right { z-index: 1; }
 
+/* 表示対象外スライド（画面外へ移動して重なり防止） */
+.slide.gone {
+  transform: translateX(680px) scale(0.6);
+  opacity: 0;
+  filter: blur(2px);
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* スマホ対応（幅600px以下）
    - ステージの高さを低めに
    - 画像サイズを縮め、object-fitで正方形のトリミング
@@ -135,4 +155,23 @@ body {
     transform: translateX(150px) scale(0.65) rotateY(-25deg);
     opacity: 0.4;              /* より控えめに */
   }
+}
+
+/* ホームボタンのスタイル */
+.home-link {
+  text-decoration: none;
+  color: #4a7ba7;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: 2px solid #4a7ba7;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.home-link:hover {
+  background-color: #4a7ba7;
+  color: white;
+  transform: scale(1.05);
 }
