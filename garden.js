@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初回レンダリング
   updateClasses();
 
-  // 3秒ごとに「左から中央へ」移動する -> current を左へ移動させる
+  // 5秒ごとに「左から中央へ」移動する -> current を左へ移動させる
   setInterval(() => {
     const n = slides.length;
     current = (current - 1 + n) % n; // 左のスライドを次の active にする
     updateClasses();
-  }, 3000);
+  }, 5000);
 });
